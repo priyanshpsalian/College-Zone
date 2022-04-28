@@ -30,11 +30,11 @@ const book = new mongoose.Schema({
    
   },
  
-  img: {
-    type: String,
-    required: true,
-    default: 'placeholder.jpg',
-  },
+  img:
+    {
+        data: Buffer,
+        contentType: String,
+    }
   
 });
 

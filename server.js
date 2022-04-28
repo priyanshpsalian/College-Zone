@@ -430,17 +430,20 @@ app.get("/confession_view", async (req, res) => {
 
 })
 
-app.post("/sell_book", async (req, res) => {
+app.post("/sell_book", upload.single('image'),async (req, res) => {
   try {
     console.log(req.body.price);
     const book_data_fun = new book_data({
       title: req.body.title,
       discription: req.body.discription,
       phone: req.body.phone,
-      img: req.body.link,
+      
       price: req.body.price,
-      sold_by: req.body.sold_by
-
+      sold_by: req.body.sold_by,
+      img: {
+        data: fs.readFileSync(path.join(__dirname + '/uploads/' + req.file.filename)),
+        contentType: 'image/png'
+      }
 
     })
     const book_done = await book_data_fun.save();
@@ -579,15 +582,17 @@ app.get("/see_post", async (req, res) => {
 
       }
       var us = JSON.parse(JSON.stringify(users));
-      console.log(us[10].img.data.data);
-      var us2 = us[10].img.data.data;
-      var base64Flag = 'data:image/jpeg;base64,';
+      // console.log(users[10].img.contentType);
+      console.log(us[10]);
+      // console.log(us[10].img.data.data);
+      // var us2 = us[10].img.data.data;
+      // var base64Flag = 'data:image/jpeg;base64,';
       
-      var imageStr = arrayBufferToBase64(us[11].img.data.data);
+      // var imageStr = arrayBufferToBase64(us[11].img.data.data);
 
-      var us2 = base64Flag + imageStr;
+      // var us2 = base64Flag + imageStr;
 
-      res.render("see_post", { da: us2 });
+      res.render("see_post", { da: us });
     })
   }
   catch (error) {

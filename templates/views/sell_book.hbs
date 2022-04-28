@@ -48,7 +48,7 @@
                     <div class="apply-wrapper">
                         <h2>Upload Post</h2>
 
-                        <form action="/sell_book" method="post" class="apply_form bg_dark_9 p-5">
+                        <form action="/sell_book" method="post" enctype="multipart/form-data" class="apply_form bg_dark_9 p-5">
                             <div class="row mx-auto text-center">
                                 <div class="col-md-6 mx-auto text-center">
                                     <div class="form-group mx-auto text-center">
@@ -188,9 +188,7 @@
                     <div class="row">
                         <div class="col-md-6 ">
                             <div class="form-group">
-                                <button id="login">
-                                    Upload images to Drive
-                                </button>
+                                <input type="file" id="image" name="image"  required>
                             </div>
                         </div>
                         {{!--
@@ -206,13 +204,13 @@
                         {{!--
                     </div> --}}
                     {{!-- <div class="row"> --}}
-                        <div class="col-md-6 ">
+                        {{!-- <div class="col-md-6 ">
                             <div class="form-group">
                                 <label for="user_last_name">Drive Link</label>
                                 <input class="form-control" type="text" name="link" id="link" required
                                     placeholder="Drive Link" required>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                     {{!-- <input type="file" name="image" id="image"> --}}
                     <div class="row">
