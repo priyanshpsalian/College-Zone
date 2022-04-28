@@ -18,7 +18,7 @@
 
 <body>
     
-    {{>header1}}
+    {{>navbar_user}}
 
     {{!-- <section class="testimonials-section section-ptb" data-aos="fade-up"> --}}
         <div class="testimonials-area my-5">
@@ -36,10 +36,10 @@
                         {{!-- <div class="testimonials-wrapper owl-carousel"> --}}
                             {{#each da}}
                             <div class="single-testimonial border-2 p-4">
-                                <p>{{attach_links}}</p>
                                 <div class="testimonial-referance">
                                     <p><strong>Title: </strong> {{title}}</p>
                                 </div>
+                                <p>{{attach_links}}</p>
                             </div>{{/each}}
                             
                         {{!-- </div> --}}
