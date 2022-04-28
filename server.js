@@ -579,26 +579,29 @@ app.get("/see_post", async (req, res) => {
     post_data.find({}, function (err, users) {
       if (err) {
         console.log(err);
-
       }
-      var us = JSON.parse(JSON.stringify(users));
+      // var us = JSON.parse(JSON.stringify(users));
       // console.log(users[10].img.contentType);
-      console.log(us[10]);
+      // console.log(us[10]);
       // console.log(us[10].img.data.data);
       // var us2 = us[10].img.data.data;
       // var base64Flag = 'data:image/jpeg;base64,';
-      
       // var imageStr = arrayBufferToBase64(us[11].img.data.data);
-
       // var us2 = base64Flag + imageStr;
 
-      res.render("see_post", { da: us });
+      // console.log(users[0].img.data.toString('ascii'));
+
+      res.render("see_post", { da: users });
     })
   }
   catch (error) {
     console.log(error);
   }
 })
+
+hbs.registerHelper('image', function(context) {
+  return context.toString('base64');
+});
 
 app.get("/see_confession", async (req, res) => {
   try {
