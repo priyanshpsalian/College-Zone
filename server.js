@@ -693,6 +693,25 @@ app.post("/ask_doubt", async (req, res) => {
   }
 
 })
+app.post("/put_info", async (req, res) => {
+  try {
+    console.log(req.body.doubt);
+    const doubt_data = new info_model({
+      name: req.body.doubt_name,
+      title: req.body.doubt_title,
+      description: req.body.doubt,
+
+
+
+    })
+    const book_done = await doubt_data.save();
+    res.render("put_info");
+
+  } catch (err) {
+    console.log(err);
+  }
+
+})
 app.get("/put_doubt", async (req, res) => {
   console.log("put22");
   res.render("put_doubt");
