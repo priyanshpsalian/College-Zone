@@ -23,7 +23,7 @@
     <!-- End Header -->
     <!-- Start Hero Area -->
     <section class="hero-section height-490 aos-init overlay aos-animate" style="background-image: url(https://assets.website-files.com/5e4ef646507f139934406108/5e52e6e633d36830153b6149_tradeshow_books_blog.jpeg);
-    height: 600px;" data-aos="fade-up">
+    height: 60vh" data-aos="fade-up">
         <div class="hero-area">
             <div class="container">
                 <div class="row">
@@ -41,7 +41,7 @@
     </section>
     <!-- End Hero Area -->
     <!--Start Page -->
-    <div class="page-wrapper section-ptb-3" data-aos="fade-up">
+    <div class="page-wrapper py-5" data-aos="fade-up">
         <div class="container mx-auto text-center">
             <div class="row mx-auto text-center">
                 <div class="col-md-10 mx-auto">
@@ -49,7 +49,11 @@
                         <h2>Upload Post</h2>
 
                         <form action="/sell_book" method="post" enctype="multipart/form-data" class="apply_form bg_dark_9 p-5">
-                            <div class="row mx-auto text-center">
+                            {{!-- <div class="row mx-auto text-center">
+                                
+
+                            </div> --}}
+                            <div class="row">
                                 <div class="col-md-6 mx-auto text-center">
                                     <div class="form-group mx-auto text-center">
                                         <label for="user_first_name">Title</label>
@@ -58,9 +62,6 @@
 
                                     </div>
                                 </div>
-
-                            </div>
-                            <div class="row">
                                 <div class="col-md-6 mx-auto text-center">
                                     <div class="form-group mx-auto text-center">
                                         <label for="user_last_name"> Description</label>
@@ -68,51 +69,8 @@
                                             required placeholder="Description" required>
                                     </div>
                                 </div>
-                                <div class="col-md-6 mx-auto text-center">
-                                    <div class="form-group">
-                                        <label for="user_phone_number">Phone Number</label>
-                                        <input type="text" name="phone" id="phone" required class="form-control"
-                                            placeholder="Phone Number">
-                                    </div>
-                                </div>
-                                {{!-- <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="user_class">Class you want to apply for*</label>
-                                        <select name="user_class" id="user_class" class="form-control">
-                                            <option value="1">Class One</option>
-                                            <option value="2">Class Two</option>
-                                            <option value="3">Class Three</option>
-                                            <option value="4">Class Four</option>
-                                            <option value="5">Class Five</option>
-                                        </select>
-                                    </div>
-                                </div> --}}
-
+                                
                             </div>
-                            {{!--
-                    </div> --}}
-                    {{!-- <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="guardian_first_name">Parents/ Guardian First Name</label>
-                                <input type="text" class="form-control" placeholder="First Name">
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="guardian_last_name">Parents/ Guardian Last Name</label>
-                                <input type="text" class="form-control" placeholder="Last Name">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label for="std_address">Student's Address</label>
-                                <input type="text" class="form-control" placeholder="State Address">
-                            </div>
-                        </div>
-                    </div> --}}
 
                     <div class="row">
                         <div class="col-md-6">
@@ -122,8 +80,17 @@
                                     placeholder="Sold By">
                             </div>
                         </div>
+                        <div class="col-md-6 mx-auto text-center">
+                                    <div class="form-group">
+                                        <label for="user_phone_number">Phone Number</label>
+                                        <input type="text" name="phone" id="phone" required class="form-control"
+                                            placeholder="Phone Number">
+                                    </div>
+                                </div>
 
-
+                    </div>
+                   
+                    <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="user_email">Price</label>
@@ -131,88 +98,14 @@
                                     placeholder="Price">
                             </div>
                         </div>
-                    </div>
-                    {{!-- <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="gender">Gender:</label>
-                                <input class="form-control" type="radio" name="gender" value="male" />
-                                <label>Male</label>
-                                <input class="form-control" type="radio" name="gender" value="female" />
-                                <label>Female</label>
-                                <input class="form-control" type="radio" name="gender" value="other" />
-                                <label>Other</label>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Age:</label>
-                                <input class="form-control" type="number" name="age" id="age" required>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="user_city">Password</label>
-                                <input type="password" name="password" id="password" required class="form-control"
-                                    placeholder="Password">
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="user_last_name">Confirm Password</label>
-                                <input type="password" name="confirmpassword" id="confirmpassword" required
-                                    class="form-control" placeholder="Confirm Password">
-                            </div>
-                        </div>
-                    </div> --}}
-                    {{!-- <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label for="user_comment">Write Your Comment</label>
-                                <textarea name="user_comment" class="form-control" id="user_comment" cols="30" rows="5"
-                                    placeholder="Your Comment"></textarea>
-                            </div>
-                        </div>
-                    </div> --}}
-                    {{!-- <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label for="user_signature">Digital Signature</label>
-                                <textarea name="user_signature" class="form-control" id="user_signature" cols="30"
-                                    rows="5" placeholder="Your Signature"></textarea>
-                            </div>
-                        </div>
-                    </div> --}}
-                    <div class="row">
                         <div class="col-md-6 ">
                             <div class="form-group">
-                                <input type="file" id="image" name="image"  required>
+                                <label for="user_email">Upload image</label>
+                                <input class="mt-3 h6" type="file" id="image" name="image"  required>
                             </div>
                         </div>
-                        {{!--
-                    </div> --}}
-                    {{!-- <div class="row"> --}}
-                        {{!-- <div class="col-md-6 mx-auto text-center">
-                            <div class="form-group">
-
-                                OR
-
-                            </div>
-                        </div> --}}
-                        {{!--
-                    </div> --}}
-                    {{!-- <div class="row"> --}}
-                        {{!-- <div class="col-md-6 ">
-                            <div class="form-group">
-                                <label for="user_last_name">Drive Link</label>
-                                <input class="form-control" type="text" name="link" id="link" required
-                                    placeholder="Drive Link" required>
-                            </div>
-                        </div> --}}
+                       
                     </div>
-                    {{!-- <input type="file" name="image" id="image"> --}}
                     <div class="row">
                         <div class="col-md-12 mx-auto text-center">
                             <button type="submit" class="button_one mt-3">Submit Form</button>
