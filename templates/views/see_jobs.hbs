@@ -29,10 +29,10 @@
     
     {{>header1}}
     <form action="/search_jobs" method="post">
-    <div class="searchbar mt-5" style="display: flex; justify-content: center;">
+    <div class="searchbar mt-4" style="display: flex; justify-content: center;">
         <div class="input-group" style="width: 263px;">
             <div class="form-outline">
-              <input type="search" name="query" id="query" class="form-control" placeholder="Search for ebooks" />
+              <input type="search" name="query" id="query" class="form-control" placeholder="Search for internship" />
             </div>
             <button type="submit" class="btn btn-primary" >
               <i class="fas fa-search"></i>
@@ -46,8 +46,8 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="section-title text-center mb-4">
-                            <h4>JOBS PAGE</h4>
-                            <h2>Here are some results...</h2>
+                            <h2>Find your dream internship ...</h2>
+                            {{!-- <h4>Intership page</h4> --}}
                         </div>
                     </div>
                 </div>
@@ -58,16 +58,16 @@
                             <div class="single-testimonial border-2 p-4">
                                 
                                 <div class="testimonial-referance">
-                                    <p><strong>Title: </strong> {{title}}</p>
+                                    <p class="h5">   {{company_name}}</p><br>
                                 </div>
                                 <div class="testimonial-referance">
-                                    <p><strong>Company name: </strong> {{company_name}}</p>
+                                    <p><strong>Post: </strong> {{title}}</p>
                                 </div>
                                 <div class="testimonial-referance">
                                     <p><strong>Location: </strong> {{location}}</p>
                                 </div>
                                 <div class="testimonial-referance">
-                                    <p>Description: </strong> {{description}}</p>
+                                    <p><strong>Description: </strong> {{{slicer description}}}</p>
                                 </div>
                             </div>{{/each}}
                             
