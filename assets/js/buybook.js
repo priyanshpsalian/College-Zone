@@ -115,6 +115,7 @@ function countCharities() {
     })
 }
 countCharities()
+
 function present(data, amount) {
 
   // console.log(data,amount);
@@ -122,7 +123,9 @@ function present(data, amount) {
   if (title.length > 21) {
     title = data.title.slice(0, 21) + " ..."
   }
-  let img = data.img;
+
+  let img = data.img.data;
+  let imgtype = data.img.contentType;
   let url = 'https://wa.me/' + data.phone;
   let desc = data.discription;
   if (desc != null) {
@@ -137,7 +140,21 @@ function present(data, amount) {
 
   let thumb = cardTemplate.querySelector(".thumbnail");
   let thumbnail = thumb.querySelector(".thumbnail1");
-  thumbnail.setAttribute("src", img);
+
+  //"data:"+imgtype+";base64,"+img.toString('base64');
+  function arrayBufferToBase64(buffer) {
+    var binary = '';
+    var bytes = [].slice.call(new Uint8Array(buffer));
+    bytes.forEach((b) => binary += String.fromCharCode(b));
+    // return window.btoa(binary);
+    return btoa(binary);
+  };
+  console.log(arrayBufferToBase64(img.data));
+  var base64Flag = 'data:image/jpeg;base64,';
+  var us2 = base64Flag + arrayBufferToBase64(img.data);
+  // let img64 = "data:"+imgtype+";base64,"+img.toString('base64');
+
+  thumbnail.setAttribute("src", us2);
 
   let pricehtml = thumb.querySelector(".priceouter").querySelector(".priceInner");
   pricehtml.innerHTML = amount;

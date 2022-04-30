@@ -73,18 +73,18 @@ app.get("/", (req, res) => {
 app.get("/temp", (req, res) => {
   res.render("temp");
 });
-app.get("/userf", (req, res) => {
-  res.render("userf");
-});
-app.get("/adminf", (req, res) => {
-  res.render("adminf");
-});
-app.get("/image_up", (req, res) => {
-  res.render("image_up");
-});
-app.get("/image_up2", (req, res) => {
-  res.render("image_up2");
-});
+// app.get("/userf", (req, res) => {
+//   res.render("userf");
+// });
+// app.get("/adminf", (req, res) => {
+//   res.render("adminf");
+// });
+// app.get("/image_up", (req, res) => {
+//   res.render("image_up");
+// });
+// app.get("/image_up2", (req, res) => {
+//   res.render("image_up2");
+// });
 app.get("/aboutus", (req, res) => {
   res.render("about");
 });
@@ -468,18 +468,18 @@ app.get("/see_books", async (req, res) => {
         console.log(err);
 
       }
-      console.log(users);
+      // console.log(users);
       res.render("see_books", { da: users });
-
     })
-
   }
   catch (error) {
     console.log(error);
-
   }
-
 })
+// hbs.registerHelper('image', function (context) {
+//   return context.toString('base64');
+// });
+
 const SerpApi = require('google-search-results-nodejs');
 const search = new SerpApi.GoogleSearch("d72eaa6e253d95441f1215c0cf9e4e5d449655178c1a1578bac8ac0cbd5fcb2e");
 
@@ -547,7 +547,7 @@ app.get("/see_books_data", async (req, res) => {
         console.log(err);
 
       }
-      console.log(users);
+      // console.log(users);
       res.send(users);
 
     })
