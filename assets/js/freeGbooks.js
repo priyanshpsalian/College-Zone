@@ -7,7 +7,7 @@ async function sendApiRequest(item) {
     .then((results) => results.json())
     .then((data) => useApiData(data));
 }
-
+https://www.googleapis.com/books/v1/volumes?q=Encyclopedia&maxResults=20&filter=free-ebooks&key=AIzaSyDGxIiCAzO8heKinFT8qFUNtABUaI4Q5ts
   
 function useApiData(data){
     let res = data.items;

@@ -70,7 +70,51 @@ function useApiData(data) {
     present(data[i], parseInt(data[i].price));
   }
 }
+const URL = "https://charitybase.uk/api/graphql"
+const HEADERS = {
+  Authorization: "Apikey 503e32f3-6a5b-4183-a7e0-ad5c5bfa725f",
+  "Content-Type": "application/json",
+}
+const COUNT_QUERY = `
+  {
+    CHC {
+      getCharities(
+        filters: {  finances: { latestIncome: { gte: 100000 } } }
+      ) {
+        list(limit: 10) {
+          id
+          names {
+            value
+          }
+          activities
+          website
+        }
+      }
+    }
+  }
+`
 
+function countCharities() {
+  return fetch(URL, {
+    method: "POST",
+    headers: HEADERS,
+    body: JSON.stringify({ query: COUNT_QUERY }),
+  })
+    .then((res) => res.json())
+    .catch((err) => {
+      console.error("FETCH ERROR (probably your network)")
+      throw err
+    })
+    .then(({ data, errors }) => {
+      if (errors) {
+        console.error("QUERY ERRORS")
+        throw errors
+      }
+      console.log(data)
+      return data.CHC.getCharities.count
+    })
+}
+countCharities()
 function present(data, amount) {
 
   // console.log(data,amount);

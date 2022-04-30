@@ -21,6 +21,7 @@ const static_path1 = path.join(__dirname, "/assets");
 const template_path = path.join(__dirname, "/templates/views");
 const partials_path = path.join(__dirname, "/templates/partials");
 var imgModel = require('./src/models/model');
+const fetch =require('isomorphic-unfetch');
 const bodyParser = require("body-parser");
 const jwt = require("jsonwebtoken");
 const formData = require("form-data");
@@ -430,14 +431,14 @@ app.get("/confession_view", async (req, res) => {
 
 })
 
-app.post("/sell_book", upload.single('image'),async (req, res) => {
+app.post("/sell_book", upload.single('image'), async (req, res) => {
   try {
     console.log(req.body.price);
     const book_data_fun = new book_data({
       title: req.body.title,
       discription: req.body.discription,
       phone: req.body.phone,
-      
+
       price: req.body.price,
       sold_by: req.body.sold_by,
       img: {
@@ -599,7 +600,7 @@ app.get("/see_post", async (req, res) => {
   }
 })
 
-hbs.registerHelper('image', function(context) {
+hbs.registerHelper('image', function (context) {
   return context.toString('base64');
 });
 
@@ -616,6 +617,57 @@ app.get("/see_confession", async (req, res) => {
     })
 
   }
+  catch (error) {
+    console.log(error);
+
+  }
+
+})
+const URL1 = "https://charitybase.uk/api/graphql"
+const HEADERS1 = {
+  Authorization: "Apikey 503e32f3-6a5b-4183-a7e0-ad5c5bfa725f",
+  "Content-Type": "application/json",
+}
+const COUNT_QUERY = `
+  {
+    CHC {
+      getCharities(
+        filters: {  finances: { latestIncome: { gte: 100000 } } }
+      ) {
+        list(limit: 10) {
+          id
+          names {
+            value
+          }
+          activities
+          website
+        }
+      }
+    }
+  }
+`
+
+app.get("/see_charity", async (req, res) => {
+  try {
+    fetch(URL1, {
+      method: "POST",
+      headers: HEADERS1,
+      body: JSON.stringify({ query: COUNT_QUERY }),
+    })
+      .then((res) => res.json())
+      .then((da1) => res.render("see_charity", { da: da1.data.CHC.getCharities.list}))
+      // .then((da1) => console.log(da1.data.CHC.getCharities.list[0].names[0].value))
+      .catch((err) => {
+        console.error("FETCH ERROR (probably your network)")
+        throw err
+      })
+
+    // console.log(users);
+    // res.render("see_charity", { da: da1 });
+
+  }
+
+
   catch (error) {
     console.log(error);
 
