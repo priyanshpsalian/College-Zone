@@ -118,7 +118,7 @@ app.get("/home", user_auth, async (req, res) => {
   // console.log(id.items[0][1].item_name);
 
 
-  res.render("home");
+  res.render("userSignedHome");
 });
 app.get("/home_user", user_auth, async (req, res) => {
   // console.log(req.cookies.jwt);
@@ -207,7 +207,7 @@ app.post("/register", async (req, res) => {
         httpOnly: true,
       });
       const registered = await registerEmployee.save();
-      res.status(201).render("home");
+      res.status(201).render("userSignedHome");
     } else {
       res.send("password not matching");
     }
@@ -448,7 +448,7 @@ app.post("/sell_book", upload.single('image'), async (req, res) => {
 
     })
     const book_done = await book_data_fun.save();
-    res.render("home");
+    res.render("userSignedHome");
 
   } catch (err) {
     console.log(err);
@@ -476,28 +476,26 @@ app.get("/see_books", async (req, res) => {
     console.log(error);
   }
 })
-// hbs.registerHelper('image', function (context) {
-//   return context.toString('base64');
-// });
+
 
 const SerpApi = require('google-search-results-nodejs');
 const search = new SerpApi.GoogleSearch("d72eaa6e253d95441f1215c0cf9e4e5d449655178c1a1578bac8ac0cbd5fcb2e");
 
 const params = {
   engine: "google_jobs",
-  domain: "software",
-  q: "software",
+  domain: "web",
+  q: "web",
   google_domain: "google.co.in",
   gl: "in",
   hl: "hi",
-  location: "Maharashtra, India"
+  location: "Mumbai, India"
 };
 
 
 app.get("/see_jobs", async (req, res) => {
   try {
     const callback = function (data) {
-      console.log(data.jobs_results);
+      // console.log(data.jobs_results);
 
       res.render("see_jobs", { da: data.jobs_results })
     };
@@ -511,6 +509,12 @@ app.get("/see_jobs", async (req, res) => {
   }
 
 })
+
+hbs.registerHelper('slicer', function (context) {
+  let sliced = context.slice(0,390) + ".....";
+  return sliced;
+});
+
 app.post("/search_jobs", async (req, res) => {
   try {
     console.log(req.body.query);
@@ -525,7 +529,7 @@ app.post("/search_jobs", async (req, res) => {
       google_domain: "google.co.in",
       gl: "in",
       hl: "hi",
-      location: "Maharashtra, India"
+      location: "Mumbai, India"
     };
     const callback = function (data) {
       console.log(data.jobs_results);
