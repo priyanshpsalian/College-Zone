@@ -400,7 +400,7 @@ app.post("/confess", async (req, res) => {
 
     })
     const confess_done = await confess_data.save();
-    res.render("index");
+    res.render("userSignedHome");
 
   } catch (err) {
     console.log(err);
@@ -690,7 +690,7 @@ app.post("/ask_doubt", async (req, res) => {
 
     })
     const book_done = await doubt_data.save();
-    res.render("ask_doubt");
+    res.render("userSignedHome");
 
   } catch (err) {
     console.log(err);
@@ -709,7 +709,7 @@ app.post("/put_info", async (req, res) => {
 
     })
     const book_done = await doubt_data.save();
-    res.render("put_info");
+    res.render("userSignedHome");
 
   } catch (err) {
     console.log(err);
@@ -818,7 +818,7 @@ app.post("/put_ans", async (req, res) => {
         },
       }
     );
-    res.render("ask_doubt");
+    res.render("userLoggedIn");
 
   } catch (err) {
     console.log("put11");
