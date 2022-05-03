@@ -98,7 +98,7 @@ app.get("/committeeheadLoggedIn", (req, res) => {
   res.render("admin_home");
 });
 app.get("/error", (req, res) => {
-  res.render(" error");
+  res.render("error");
 });
 
 
